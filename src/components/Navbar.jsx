@@ -30,9 +30,7 @@ function Navbar() {
             <div>YourName.</div>
             <div style={{ display: 'flex', gap: '2rem' }}>
                 <a href="#about" style={{ textDecoration: 'none', color: 'inherit' }}>About</a>
-                <a href="#skills" style={{ textDecoration: 'none', color: 'inherit' }}>Skills</a>
                 <a href="#projects" style={{ textDecoration: 'none', color: 'inherit' }}>Projects</a>
-                <a href="#contact" style={{ textDecoration: 'none', color: 'inherit' }}>Contact</a>
             </div>
         </nav>
     )

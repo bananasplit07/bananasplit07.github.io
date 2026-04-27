@@ -42,12 +42,12 @@ function About() {
                             {/* Education */}
                             <section>
                                 <h3 className="font-mono text-xs text-primary mb-4 uppercase tracking-widest border-b border-border pb-2">Education</h3>
-                                <div className="space-y-2">
+                                <div className="space-y-6">
                                     {educationData.map((edu) => (
                                         <div key={edu.id} className="flex flex-col gap-1">
-                                            <div className="flex justify-between items-start">
+                                            <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-1">
                                                 <span className="text-foreground font-medium">{edu.institution}</span>
-                                                <span className="font-mono text-xs text-muted-foreground">{edu.duration}</span>
+                                                <span className="font-mono text-[10px] md:text-xs text-muted-foreground whitespace-nowrap">{edu.duration}</span>
                                             </div>
                                             <span className="text-sm text-muted-foreground">{edu.degree}</span>
                                             {edu.gpa && <span className="text-sm text-muted-foreground">GPAX: {edu.gpa}</span>}
@@ -59,22 +59,24 @@ function About() {
                             {/* Experience */}
                             <section>
                                 <h3 className="font-mono text-xs text-primary mb-4 uppercase tracking-widest border-b border-border pb-2">Experience</h3>
-                                <div className="space-y-4">
+                                <div className="space-y-8">
                                     <div className="flex flex-col gap-1">
-                                        <div className="flex justify-between items-start">
+                                        <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-1">
                                             <span className="text-foreground font-medium">Application Developer (Internship)</span>
-                                            <span className="font-mono text-xs text-muted-foreground">April 2025 - June 2025</span>
+                                            <span className="font-mono text-[10px] md:text-xs text-muted-foreground whitespace-nowrap">April 2025 - June 2025</span>
                                         </div>
-                                        <span className="text-sm">T.C.C. Technology Co., Ltd.</span>
-                                        <p className="text-sm text-muted-foreground leading-relaxed">
-                                            - Developing front-end contact list and messaging system using ReactJS.
-                                        </p>
-                                        <p className="text-sm text-muted-foreground leading-relaxed">
-                                            - Developing notification system for mobile application using Firebase Cloud Messaging.
-                                        </p>
-                                        <p className="text-sm text-muted-foreground leading-relaxed">
-                                            - Business analysis for customer requirements and system improvements.
-                                        </p>
+                                        <span className="text-sm text-primary/80 font-medium">T.C.C. Technology Co., Ltd.</span>
+                                        <div className="space-y-2 mt-2">
+                                            <p className="text-sm text-muted-foreground leading-relaxed">
+                                                • Developing front-end contact list and messaging system using ReactJS.
+                                            </p>
+                                            <p className="text-sm text-muted-foreground leading-relaxed">
+                                                • Developing notification system for mobile application using Firebase Cloud Messaging.
+                                            </p>
+                                            <p className="text-sm text-muted-foreground leading-relaxed">
+                                                • Business analysis for customer requirements and system improvements.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </section>

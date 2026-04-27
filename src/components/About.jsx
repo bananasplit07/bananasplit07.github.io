@@ -1,5 +1,7 @@
 import { motion } from 'motion/react'
 import { fadeUp } from '@/lib/animations'
+import ThanatPicture from '@/data/Thanat_Picture.jpeg'
+import { educationData } from '@/data/about/educationData'
 
 function About() {
     return (
@@ -17,9 +19,9 @@ function About() {
                     <div className="relative border border-border bg-card aspect-square overflow-hidden shadow-[4px_4px_0px_0px_hsl(var(--border))]">
                         <div className="absolute inset-0 bg-primary/5 mix-blend-overlay z-10 pointer-events-none border-[0.5px] border-primary/20 m-2"></div>
                         <img
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVoA9psLdV4UfD3VEobcLrmlqGY4CgZdLsBEEl19cgaO8NjpBI1p06C6P3cHHwac6wqAMnNFXNbyXMmGkQjpEzpXtYSTxxWg2nED3iPhN1_QZeS9Yx_c_iaLwilHEpI3H3aoqLR8phYbPjCAprTBGPP-MV5KLGPv-cDUA3vwByrq91e-rl5X3lwM2EM138pTdlQAYRkccClFjiHN2VRo_PORxQ2WRlVjcvwz17dsBOwxiACEaN4kZy6z1aKOwM4W21HDhFNp1dkFY"
-                            alt="Headshot"
-                            className="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+                            src={ThanatPicture}
+                            alt="Thanat"
+                            className="w-full h-full object-cover object-top grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
                         />
                     </div>
 
@@ -40,15 +42,17 @@ function About() {
                             {/* Education */}
                             <section>
                                 <h3 className="font-mono text-xs text-primary mb-4 uppercase tracking-widest border-b border-border pb-2">Education</h3>
-                                <div className="space-y-4">
-                                    <div className="flex flex-col gap-1">
-                                        <div className="flex justify-between items-start">
-                                            <span className="text-foreground font-medium">B.Sc. in Computer Science</span>
-                                            <span className="font-mono text-xs text-muted-foreground">2022 — 2025</span>
+                                <div className="space-y-2">
+                                    {educationData.map((edu) => (
+                                        <div key={edu.id} className="flex flex-col gap-1">
+                                            <div className="flex justify-between items-start">
+                                                <span className="text-foreground font-medium">{edu.institution}</span>
+                                                <span className="font-mono text-xs text-muted-foreground">{edu.duration}</span>
+                                            </div>
+                                            <span className="text-sm text-muted-foreground">{edu.degree}</span>
+                                            {edu.gpa && <span className="text-sm text-muted-foreground">GPAX: {edu.gpa}</span>}
                                         </div>
-                                        <span className="text-sm text-muted-foreground">Chiang Mai University</span>
-                                        <span className="text-sm text-muted-foreground">GPAX: 2.94</span>
-                                    </div>
+                                    ))}
                                 </div>
                             </section>
 

@@ -10,7 +10,7 @@ function ProjectCard({ project }) {
             {/* Card top */}
             <div className="flex justify-between items-start mb-4">
                 <p className="font-mono text-xs text-muted-foreground tracking-widest">
-                    {project.id} / {String(projects.length).padStart(2, '0')}
+
                 </p>
                 <div className="flex gap-3">
                     <a

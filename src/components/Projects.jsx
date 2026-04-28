@@ -1,23 +1,33 @@
-import { motion } from 'motion/react'
-import { ArrowUpRight, Code2 } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'motion/react'
+import { ArrowUpRight, Code2, X, ChevronRight } from 'lucide-react'
 import { fadeUp } from '@/lib/animations'
 import { projects } from '@/data/projects/projectData.js'
 
-function ProjectCard({ project }) {
+function ProjectCard({ project, onExpand }) {
     return (
-        <div className="border border-border bg-card shadow-[4px_4px_0px_0px_hsl(var(--border))] p-6 flex flex-col hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_hsl(var(--border))] transition-all duration-200">
-
+        <motion.div
+            layoutId={`card-${project.id}`}
+            onClick={() => onExpand(project)}
+            whileHover={{ y: -2, x: -2 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="group cursor-pointer border border-border bg-card shadow-[4px_4px_0px_0px_hsl(var(--border))] p-6 flex flex-col hover:shadow-[6px_6px_0px_0px_hsl(var(--border))] active:scale-[0.98]"
+        >
             {/* Card top */}
             <div className="flex justify-between items-start mb-4">
-                <p className="font-mono text-xs text-muted-foreground tracking-widest">
-
-                </p>
+                <motion.p
+                    layoutId={`id-${project.id}`}
+                    className="font-mono text-xs text-muted-foreground tracking-widest"
+                >
+                    PROJ_{project.id}
+                </motion.p>
                 <div className="flex gap-3">
                     {project.demo && (
                         <a
                             href={project.demo}
                             target="_blank"
                             rel="noreferrer"
+                            onClick={(e) => e.stopPropagation()}
                             className="inline-flex items-center gap-1 font-mono text-xs text-muted-foreground uppercase tracking-wider hover:text-foreground transition-colors"
                         >
                             <ArrowUpRight size={13} /> Demo
@@ -28,6 +38,7 @@ function ProjectCard({ project }) {
                             href={project.repo}
                             target="_blank"
                             rel="noreferrer"
+                            onClick={(e) => e.stopPropagation()}
                             className="inline-flex items-center gap-1 font-mono text-xs text-muted-foreground uppercase tracking-wider hover:text-foreground transition-colors"
                         >
                             <Code2 size={13} /> Repo
@@ -37,35 +48,215 @@ function ProjectCard({ project }) {
             </div>
 
             {/* Title */}
-            <h3 className="text-lg font-semibold tracking-tight text-foreground mb-3">
+            <motion.h3
+                layoutId={`title-${project.id}`}
+                className="text-lg font-semibold tracking-tight text-foreground mb-3"
+            >
                 {project.title}
-            </h3>
+            </motion.h3>
 
             {/* Description */}
-            <p className="text-sm text-muted-foreground leading-relaxed mb-auto pb-6">
+            <motion.p
+                layoutId={`desc-${project.id}`}
+                className="text-sm text-muted-foreground leading-relaxed mb-auto pb-6 line-clamp-3"
+            >
                 {project.description}
-            </p>
+            </motion.p>
 
             {/* Stack */}
-            <div className="border-t border-border pt-4 flex flex-wrap gap-2">
-                {project.stack.map((tech) => (
+            <motion.div
+                layoutId={`stack-${project.id}`}
+                className="border-t border-border pt-4 flex flex-wrap gap-2"
+            >
+                {project.stack.slice(0, 4).map((tech) => (
                     <span
                         key={tech}
-                        className="font-mono text-xs border border-border px-2.5 py-1 text-muted-foreground bg-background"
+                        className="font-mono text-[10px] border border-border px-2 py-0.5 text-muted-foreground bg-background"
                     >
                         {tech}
                     </span>
                 ))}
-            </div>
+                {project.stack.length > 4 && (
+                    <span className="font-mono text-[10px] text-muted-foreground pt-1">
+                        +{project.stack.length - 4} more
+                    </span>
+                )}
+            </motion.div>
 
+        </motion.div>
+    )
+}
+
+function ProjectDetail({ project, onClose }) {
+    useEffect(() => {
+        const handleEsc = (e) => {
+            if (e.key === 'Escape') onClose();
+        };
+        window.addEventListener('keydown', handleEsc);
+        document.body.style.overflow = 'hidden';
+        return () => {
+            window.removeEventListener('keydown', handleEsc);
+            document.body.style.overflow = 'unset';
+        };
+    }, [onClose]);
+
+    return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 lg:p-12">
+            {/* Backdrop */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                onClick={onClose}
+                className="absolute inset-0 backdrop-blur-xs"
+            />
+
+            {/* Modal Content */}
+            <motion.div
+                layoutId={`card-${project.id}`}
+                transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                className="relative w-full max-w-7xl max-h-[90vh] overflow-y-auto border-2 border-border bg-card shadow-[8px_8px_0px_0px_hsl(var(--border))] flex flex-col md:flex-row z-50"
+            >
+                {/* Close Button */}
+                <motion.button
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ delay: 0.2 }}
+                    onClick={onClose}
+                    className="absolute top-4 right-4 z-20 p-2 bg-background border border-border hover:bg-accent transition-colors"
+                >
+                    <X size={20} />
+                </motion.button>
+
+                {/* Left Side: Image & Meta */}
+                <div className="md:w-5/12 border-b md:border-b-0 md:border-r border-border bg-muted/30">
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ delay: 0.1, duration: 0.3 }}
+                        className="aspect-video md:aspect-square overflow-hidden border-b border-border"
+                    >
+                        <img
+                            src={project.image}
+                            alt={project.title}
+                            className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-500"
+                        />
+                    </motion.div>
+                    <div className="p-6 md:p-8">
+                        <motion.p layoutId={`id-${project.id}`} className="font-mono text-xs text-muted-foreground tracking-widest mb-4">
+                            PROJ_{project.id}
+                        </motion.p>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="flex flex-wrap gap-4 mb-8"
+                        >
+                            {project.demo && (
+                                <a
+                                    href={project.demo}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground font-mono text-[10px] md:text-xs uppercase tracking-wider hover:opacity-90 transition-opacity"
+                                >
+                                    <ArrowUpRight size={14} /> Live Demo
+                                </a>
+                            )}
+                            {project.repo && (
+                                <a
+                                    href={project.repo}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="flex items-center gap-2 px-4 py-2 border border-border font-mono text-[10px] md:text-xs uppercase tracking-wider hover:bg-accent transition-colors"
+                                >
+                                    <Code2 size={14} /> View Source
+                                </a>
+                            )}
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.3 }}
+                        >
+                            <h4 className="font-mono text-[10px] font-semibold text-foreground uppercase tracking-widest mb-4 border-b border-border pb-2">
+                                Technologies
+                            </h4>
+                            <motion.div layoutId={`stack-${project.id}`} className="flex flex-wrap gap-2">
+                                {project.stack.map((tech) => (
+                                    <span
+                                        key={tech}
+                                        className="font-mono text-[10px] border border-border px-2 py-0.5 text-muted-foreground bg-background"
+                                    >
+                                        {tech}
+                                    </span>
+                                ))}
+                            </motion.div>
+                        </motion.div>
+                    </div>
+                </div>
+
+                {/* Right Side: Content */}
+                <div className="md:w-7/12 p-6 md:p-10 lg:p-12 flex flex-col bg-card">
+                    <motion.h3
+                        layoutId={`title-${project.id}`}
+                        className="text-2xl md:text-4xl font-bold tracking-tight text-foreground mb-4"
+                    >
+                        {project.title}
+                    </motion.h3>
+
+                    <motion.p
+                        layoutId={`desc-${project.id}`}
+                        className="text-sm md:text-base text-muted-foreground leading-relaxed mb-8"
+                    >
+                        {project.description}
+                    </motion.p>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 20 }}
+                        transition={{ delay: 0.2, duration: 0.4 }}
+                        className="space-y-8"
+                    >
+                        <div>
+                            <h4 className="font-mono text-xs font-semibold text-foreground uppercase tracking-widest mb-4 flex items-center gap-2">
+                                <span className="w-2 h-0.5 bg-primary" /> Overview
+                            </h4>
+                            <p className="text-sm md:text-base text-foreground/80 leading-relaxed italic border-l-2 border-primary/20 pl-4 py-1">
+                                {project.longDescription}
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 className="font-mono text-xs font-semibold text-foreground uppercase tracking-widest mb-4 flex items-center gap-2">
+                                <span className="w-2 h-0.5 bg-primary" /> Key Features
+                            </h4>
+                            <ul className="grid grid-cols-1 gap-3">
+                                {project.features.map((feature, i) => (
+                                    <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground group/item">
+                                        <ChevronRight size={14} className="mt-1 flex-shrink-0 text-primary group-hover/item:translate-x-1 transition-transform" />
+                                        <span>{feature}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </motion.div>
+                </div>
+            </motion.div>
         </div>
     )
 }
 
 export default function Projects() {
-    return (
-        <motion.section id="projects" {...fadeUp}>
+    const [selectedProject, setSelectedProject] = useState(null)
 
+    return (
+        <motion.section id="projects" {...fadeUp} className="relative">
             {/* Header */}
             <div className="mb-12">
                 <h2 className="text-3xl font-semibold text-foreground tracking-tighter mb-4">
@@ -76,23 +267,29 @@ export default function Projects() {
                     <span className="font-mono text-[10px] md:text-xs text-muted-foreground tracking-widest uppercase">
                         Projects_Log :: {String(projects.length).padStart(2, '0')} entries
                     </span>
-                    <a
-                        href="https://github.com/bananasplit07"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="font-mono text-[10px] md:text-xs text-foreground tracking-widest uppercase border-b border-border hover:border-primary transition-colors pb-px w-fit"
-                    >
-                        View All on GitHub →
-                    </a>
                 </div>
             </div>
 
             {/* 2-per-row grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {projects.map((project) => (
-                    <ProjectCard key={project.id} project={project} />
+                    <ProjectCard
+                        key={project.id}
+                        project={project}
+                        onExpand={setSelectedProject}
+                    />
                 ))}
             </div>
+
+            {/* Expanded View */}
+            <AnimatePresence>
+                {selectedProject && (
+                    <ProjectDetail
+                        project={selectedProject}
+                        onClose={() => setSelectedProject(null)}
+                    />
+                )}
+            </AnimatePresence>
 
         </motion.section>
     )

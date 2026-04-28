@@ -1,6 +1,7 @@
 import { motion } from 'motion/react'
 import { ArrowRight, Code2 } from 'lucide-react'
 import { fadeUp } from '@/lib/animations'
+import GithubIcon from '@/assets/github';
 
 function Hero() {
     return (
@@ -24,7 +25,7 @@ function Hero() {
 
                 <span className="font-mono text-[0.6rem] md:text-[0.7rem] tracking-widest uppercase text-muted-foreground mb-6">
 
-                    CS Graduate · Full-Stack · Frontend · Backend
+                    CS Graduate · Full-Stack · Frontend · Backend · Data Analytics
 
                 </span>
 

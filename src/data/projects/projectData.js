@@ -3,58 +3,71 @@ export const projects = [
         id: '01',
         title: 'Rayong Botanic Garden',
         description:
-            'Digital companion platform for Rayong Botanic Garden. A full-stack web application designed to enhance the experience of garden visitors while providing an administrative dashboard for the garden\'s staff to manage content and track engagement.',
-        longDescription: 
-            'The Rayong Botanic Garden digital platform is a comprehensive solution aimed at modernizing the visitor experience. It features an interactive map, plant identification tools, and a seamless booking system. For the administrators, it provides a powerful dashboard with real-time analytics, content management system (CMS) for updating botanical information, and visitor flow tracking.',
+            'Developed a web application for Rayong Botanic Garden as a real-client project, serving as an interactive learning and touring media for visitors.',
         features: [
-            'Interactive Botanical Map with GPS integration',
-            'Plant QR Code Scanner for instant information',
-            'Staff Dashboard for real-time visitor analytics',
-            'Automated Content Management via AI (Dify integration)',
-            'Multi-language support for international tourists'
+            'Developed a web application for Rayong Botanic Garden as a real-client project, serving as an interactive learning and touring media for visitors',
+            'Designed application wireframes in Figma to define structure, user flow, and functionality prior to development',
+            'Built an interactive map with category-based filtering, allowing visitors to locate and explore garden zones'
         ],
         stack: ['TypeScript', 'Nuxt', 'Vue', 'Python', 'Flask', 'Gunicorn', 'Redis', 'PostgreSQL', 'Docker', 'AWS', 'Dify'],
         demo: 'https://www.rayongbotanic.app',
         repo: '',
-        image: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=1000&auto=format&fit=crop'
+        images: [
+            'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=1000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1466721591366-2d5fba72006d?q=80&w=1000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?q=80&w=1000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=1000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop'
+        ]
     },
     {
         id: '02',
         title: 'CS Course Registration Recommendation Chatbot',
         description:
-            'Chatbot assistant for Computer Science Chiang Mai university students for course registration. Users can ask about course information, check eligibility to enroll in courses, and get course recommendation based on user passed courses and interested career paths.',
-        longDescription:
-            'This chatbot leverages Large Language Models to provide personalized academic advising to CS students. It analyzes a student\'s transcript and career goals to suggest the most relevant elective courses. It also simplifies the complex registration rules of the university into a conversational interface, making it easier for students to navigate their degree requirements.',
+            'Developed an AI-powered web chatbot, designed to assist Computer Science students at Chiang Mai University with course registration.',
         features: [
-            'Personalized course recommendations based on career path',
-            'Prerequisite checking and eligibility validation',
-            'Interactive degree requirement visualization',
-            'Natural Language queries for course information',
-            'Seamless integration with CMU SIS data'
+            'Developed an AI-powered web chatbot, designed to assist Computer Science students at Chiang Mai University with course registration',
+            'Engineered an LLM workflow using Dify to handle natural language queries across three core features course information lookup, enrollment eligibility checking, and personalized course recommendations based on completed courses and target career paths',
+            'Designed and managed a Supabase database storing courses, student academic records, and conversation history to support context-aware responses'
         ],
         stack: ['React', 'Vite', 'Golang', 'Supabase', 'Dify'],
         demo: '',
         repo: '',
-        image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop'
+        images: [
+            'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=1000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop'
+        ]
     },
     {
         id: '03',
         title: 'S.Factory',
         description:
-            'Mobile Application capable of logging and requesting machine maintenance. Manage machine parts stock and work order.',
-        longDescription:
-            'S.Factory is an industrial-grade maintenance management system. It allows factory floor workers to report machine issues instantly via mobile, which automatically triggers work orders for the maintenance team. It includes a comprehensive inventory management system for spare parts and tracks the maintenance history of every machine in the facility.',
+            'Developed a cross-platform factory maintenance management system supporting iOS, Android, web, Windows, macOS, and Linux using Flutter and Dart.',
         features: [
-            'Real-time maintenance request logging',
-            'Automatic Work Order generation and assignment',
-            'Inventory tracking with low-stock notifications',
-            'QR code integration for machine identification',
-            'Offline support for factory floor environments'
+            'Developed a cross-platform factory maintenance management system supporting iOS, Android, web, Windows, macOS, and Linux using Flutter and Dart',
+            'Role-based access control for three user types (Admin, Mechanic, Staff) with dynamic navigation and feature visibility using secure local storage and Firebase Auth',
+            'Implemented Firebase backend integration using GraphQL (Firebase Data Connect) for CRUD operations, Firebase Storage for image uploads, and Cloud Messaging for push notifications'
         ],
-        stack: ['Flutter', 'Dart', 'Firebase'],
+        stack: ['Flutter', 'Dart', 'Firebase', 'GraphQL'],
         demo: '',
         repo: '',
-        image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1000&auto=format&fit=crop'
+        images: [
+            'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1565514020179-026b92b84bb6?q=80&w=1000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=1000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=1000&auto=format&fit=crop'
+        ]
     }
-
 ]

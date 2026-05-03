@@ -1,7 +1,7 @@
 import { motion } from 'motion/react'
 import { ArrowRight, Code2 } from 'lucide-react'
 import { fadeUp } from '@/lib/animations'
-import GithubIcon from '@/assets/github';
+
 
 function Hero() {
     return (
@@ -35,22 +35,62 @@ function Hero() {
                     Full-stack developer building scalable, cross-platform applications. Specialize in frontend frameworks, backend systems, and cloud-based solutions to deliver intuitive interfaces and robust backend systems.
                 </p>
 
-                <div className="flex flex-wrap gap-4">
-                    <a href="#projects" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 border border-primary hover:bg-primary/90 transition-colors font-mono text-xs md:text-sm tracking-widest uppercase">
+                <div className="grid grid-cols-2 gap-4 w-fit">
+                    <a href="#projects" className="flex-1 flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 border border-primary hover:bg-primary/90 transition-colors font-mono text-xs md:text-sm tracking-widest uppercase whitespace-nowrap">
                         View My Work <ArrowRight size={18} />
                     </a>
-                    <a href="https://github.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-transparent text-foreground px-6 py-3 border border-border hover:border-primary hover:text-primary transition-colors font-mono text-xs md:text-sm tracking-widest uppercase">
-                        <Code2 size={18} /> Source Code
+                    <a href="/Thanat_Resume.pdf" download="Thanat_Resume.pdf" className="flex-1 flex items-center justify-center gap-2 bg-transparent text-foreground px-6 py-3 border border-border hover:border-primary hover:text-primary transition-colors font-mono text-xs md:text-sm tracking-widest uppercase whitespace-nowrap">
+                        <Code2 size={18} /> Resume
                     </a>
                 </div>
 
-                {/* Tech Stack Chips */}
-                <div className="mt-16 flex flex-wrap gap-3">
-                    {['React', 'Vue', 'TailwindCSS', 'Flutter', 'Go', 'Python', 'Docker', 'PostgreSQL'].map(tech => (
-                        <span key={tech} className="font-mono text-xs md:text-sm text-muted-foreground border border-border px-3 py-1 bg-card">
-                            {tech}
-                        </span>
-                    ))}
+                {/* Social Links */}
+                <div className="mt-16 flex gap-4">
+                    <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="p-3 border border-border hover:border-primary transition-all bg-card/50 backdrop-blur-sm group">
+                        <div 
+                            className="w-5 h-5 bg-foreground group-hover:bg-primary transition-all group-hover:scale-110"
+                            style={{ 
+                                maskImage: 'url(/social-linkedin.svg)', 
+                                WebkitMaskImage: 'url(/social-linkedin.svg)',
+                                maskSize: 'contain',
+                                WebkitMaskSize: 'contain',
+                                maskRepeat: 'no-repeat',
+                                WebkitMaskRepeat: 'no-repeat',
+                                maskPosition: 'center',
+                                WebkitMaskPosition: 'center'
+                            }} 
+                        />
+                    </a>
+                    <a href="https://github.com/bananasplit07" target="_blank" rel="noreferrer" className="p-3 border border-border hover:border-primary transition-all bg-card/50 backdrop-blur-sm group">
+                        <div 
+                            className="w-5 h-5 bg-foreground group-hover:bg-primary transition-all group-hover:scale-110"
+                            style={{ 
+                                maskImage: 'url(/github.svg)', 
+                                WebkitMaskImage: 'url(/github.svg)',
+                                maskSize: 'contain',
+                                WebkitMaskSize: 'contain',
+                                maskRepeat: 'no-repeat',
+                                WebkitMaskRepeat: 'no-repeat',
+                                maskPosition: 'center',
+                                WebkitMaskPosition: 'center'
+                            }} 
+                        />
+                    </a>
+                    <a href="mailto:thanat.thp@gmail.com" className="p-3 border border-border hover:border-primary transition-all bg-card/50 backdrop-blur-sm group">
+                        <div 
+                            className="w-5 h-5 bg-foreground group-hover:bg-primary transition-all group-hover:scale-110"
+                            style={{ 
+                                maskImage: 'url(/mail.svg)', 
+                                WebkitMaskImage: 'url(/mail.svg)',
+                                maskSize: 'contain',
+                                WebkitMaskSize: 'contain',
+                                maskRepeat: 'no-repeat',
+                                WebkitMaskRepeat: 'no-repeat',
+                                maskPosition: 'center',
+                                WebkitMaskPosition: 'center'
+                            }} 
+                        />
+                    </a>
                 </div>
             </div>
         </motion.section>

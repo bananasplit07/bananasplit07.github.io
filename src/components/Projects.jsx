@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-import { ArrowUpRight, Code2, X, ChevronRight } from 'lucide-react'
+import { ArrowUpRight, Code2, X, ChevronRight, ChevronLeft } from 'lucide-react'
 import { fadeUp } from '@/lib/animations'
 import { projects } from '@/data/projects/projectData.js'
 
@@ -88,6 +88,8 @@ function ProjectCard({ project, onExpand }) {
 }
 
 function ProjectDetail({ project, onClose }) {
+    const [currentImage, setCurrentImage] = useState(0)
+
     useEffect(() => {
         const handleEsc = (e) => {
             if (e.key === 'Escape') onClose();
@@ -99,6 +101,9 @@ function ProjectDetail({ project, onClose }) {
             document.body.style.overflow = 'unset';
         };
     }, [onClose]);
+
+    const nextImage = () => setCurrentImage((prev) => (prev + 1) % project.images.length)
+    const prevImage = () => setCurrentImage((prev) => (prev - 1 + project.images.length) % project.images.length)
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 lg:p-12">
@@ -130,78 +135,91 @@ function ProjectDetail({ project, onClose }) {
                     <X size={20} />
                 </motion.button>
 
-                {/* Left Side: Image & Meta */}
-                <div className="md:w-5/12 border-b md:border-b-0 md:border-r border-border bg-muted/30">
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        transition={{ delay: 0.1, duration: 0.3 }}
-                        className="aspect-video md:aspect-square overflow-hidden border-b border-border"
-                    >
-                        <img
-                            src={project.image}
-                            alt={project.title}
-                            className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-500"
-                        />
-                    </motion.div>
-                    <div className="p-6 md:p-8">
-                        <motion.p layoutId={`id-${project.id}`} className="font-mono text-xs text-muted-foreground tracking-widest mb-4">
-                            PROJ_{project.id}
-                        </motion.p>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.2 }}
-                            className="flex flex-wrap gap-4 mb-8"
-                        >
+                {/* Left Side: Image Carousel & Meta */}
+                <div className="md:w-7/12 border-b md:border-b-0 md:border-r border-border bg-muted/30 flex flex-col transition-all duration-300">
+                    <div className="relative flex-1 overflow-hidden group/carousel min-h-[400px]">
+                        {/* Floating Action Buttons */}
+                        <div className="absolute top-4 left-4 z-20 flex flex-col gap-2">
                             {project.demo && (
-                                <a
+                                <motion.a
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
                                     href={project.demo}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground font-mono text-[10px] md:text-xs uppercase tracking-wider hover:opacity-90 transition-opacity"
+                                    className="flex items-center gap-2 p-2 md:px-3 md:py-2 bg-background/95 border border-border hover:bg-primary hover:text-primary-foreground transition-all backdrop-blur-sm shadow-[2px_2px_0px_0px_hsl(var(--border))] group/btn"
+                                    title="Live Demo"
                                 >
-                                    <ArrowUpRight size={14} /> Live Demo
-                                </a>
+                                    <ArrowUpRight size={18} />
+                                    <span className="font-mono text-[10px] uppercase tracking-widest hidden md:block">Demo</span>
+                                </motion.a>
                             )}
                             {project.repo && (
-                                <a
+                                <motion.a
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.1 }}
                                     href={project.repo}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="flex items-center gap-2 px-4 py-2 border border-border font-mono text-[10px] md:text-xs uppercase tracking-wider hover:bg-accent transition-colors"
+                                    className="flex items-center gap-2 p-2 md:px-3 md:py-2 bg-background/95 border border-border hover:bg-primary hover:text-primary-foreground transition-all backdrop-blur-sm shadow-[2px_2px_0px_0px_hsl(var(--border))] group/btn"
+                                    title="View Source"
                                 >
-                                    <Code2 size={14} /> View Source
-                                </a>
+                                    <Code2 size={18} />
+                                    <span className="font-mono text-[10px] uppercase tracking-widest hidden md:block">Repo</span>
+                                </motion.a>
                             )}
-                        </motion.div>
+                        </div>
+                        <AnimatePresence mode="wait">
+                            <motion.img
+                                key={currentImage}
+                                src={project.images[currentImage]}
+                                alt={`${project.title} screenshot ${currentImage + 1}`}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -20 }}
+                                transition={{ duration: 0.3 }}
+                                className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-500"
+                            />
+                        </AnimatePresence>
 
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.3 }}
-                        >
-                            <h4 className="font-mono text-[10px] font-semibold text-foreground uppercase tracking-widest mb-4 border-b border-border pb-2">
-                                Technologies
-                            </h4>
-                            <motion.div layoutId={`stack-${project.id}`} className="flex flex-wrap gap-2">
-                                {project.stack.map((tech) => (
-                                    <span
-                                        key={tech}
-                                        className="font-mono text-[10px] border border-border px-2 py-0.5 text-muted-foreground bg-background"
-                                    >
-                                        {tech}
-                                    </span>
-                                ))}
-                            </motion.div>
-                        </motion.div>
+                        {/* Carousel Controls */}
+                        {project.images.length > 1 && (
+                            <>
+                                <button
+                                    onClick={prevImage}
+                                    className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-background/80 border border-border hover:bg-background opacity-0 group-hover/carousel:opacity-100 transition-opacity z-10"
+                                >
+                                    <ChevronLeft size={18} />
+                                </button>
+                                <button
+                                    onClick={nextImage}
+                                    className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-background/80 border border-border hover:bg-background opacity-0 group-hover/carousel:opacity-100 transition-opacity z-10"
+                                >
+                                    <ChevronRight size={18} />
+                                </button>
+
+                                {/* Overlay Indicator Dots */}
+                                {project.images.length > 1 && (
+                                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1 z-10">
+                                        {project.images.map((_, i) => (
+                                            <button
+                                                key={i}
+                                                onClick={() => setCurrentImage(i)}
+                                                className={`w-2 h-2 rounded-full transition-all backdrop-blur-sm ${i === currentImage
+                                                    ? 'bg-primary w-6'
+                                                    : 'bg-white/50 hover:bg-white/80'
+                                                    }`}
+                                            />
+                                        ))}
+                                    </div>
+                                )}
+                            </>
+                        )}
                     </div>
                 </div>
 
                 {/* Right Side: Content */}
-                <div className="md:w-7/12 p-6 md:p-10 lg:p-12 flex flex-col bg-card">
+                <div className="md:w-5/12 p-6 md:p-10 lg:p-12 flex flex-col bg-card transition-all duration-300">
                     <motion.h3
                         layoutId={`title-${project.id}`}
                         className="text-2xl md:text-4xl font-bold tracking-tight text-foreground mb-4"
@@ -225,18 +243,9 @@ function ProjectDetail({ project, onClose }) {
                     >
                         <div>
                             <h4 className="font-mono text-xs font-semibold text-foreground uppercase tracking-widest mb-4 flex items-center gap-2">
-                                <span className="w-2 h-0.5 bg-primary" /> Overview
-                            </h4>
-                            <p className="text-sm md:text-base text-foreground/80 leading-relaxed italic border-l-2 border-primary/20 pl-4 py-1">
-                                {project.longDescription}
-                            </p>
-                        </div>
-
-                        <div>
-                            <h4 className="font-mono text-xs font-semibold text-foreground uppercase tracking-widest mb-4 flex items-center gap-2">
                                 <span className="w-2 h-0.5 bg-primary" /> Key Features
                             </h4>
-                            <ul className="grid grid-cols-1 gap-3">
+                            <ul className="grid grid-cols-1 gap-3 mb-8">
                                 {project.features.map((feature, i) => (
                                     <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground group/item">
                                         <ChevronRight size={14} className="mt-1 flex-shrink-0 text-primary group-hover/item:translate-x-1 transition-transform" />
@@ -244,6 +253,22 @@ function ProjectDetail({ project, onClose }) {
                                     </li>
                                 ))}
                             </ul>
+                        </div>
+
+                        <div>
+                            <h4 className="font-mono text-[10px] font-semibold text-foreground uppercase tracking-widest mb-4 border-b border-border pb-2">
+                                Technologies
+                            </h4>
+                            <motion.div layoutId={`stack-${project.id}`} className="flex flex-wrap gap-2">
+                                {project.stack.map((tech) => (
+                                    <span
+                                        key={tech}
+                                        className="font-mono text-[10px] border border-border px-2 py-0.5 text-muted-foreground bg-background"
+                                    >
+                                        {tech}
+                                    </span>
+                                ))}
+                            </motion.div>
                         </div>
                     </motion.div>
                 </div>

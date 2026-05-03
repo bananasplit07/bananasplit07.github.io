@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
 import { fadeUp } from '@/lib/animations'
-import ThanatPicture from '@/data/Thanat_Picture.jpeg'
+import ThanatPicture from '@/assets/Thanat_Picture.jpeg'
 import { educationData } from '@/data/about/educationData'
 import { experienceData } from '@/data/about/experienceData'
 
@@ -16,9 +16,8 @@ function About() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
-                <div className="col-span-12 md:col-span-5 flex flex-col gap-6 md:gap-8">
+                <div className="col-span-12 md:col-span-5 flex flex-col gap-6 md:gap-8 h-full">
                     <div className="relative border border-border bg-card aspect-square overflow-hidden shadow-[4px_4px_0px_0px_hsl(var(--border))] mr-1 mb-1">
-                        <div className="absolute inset-0 bg-primary/5 mix-blend-overlay z-10 pointer-events-none border-[0.5px] border-primary/20 m-2"></div>
                         <img
                             src={ThanatPicture}
                             alt="Thanat"
@@ -26,7 +25,7 @@ function About() {
                         />
                     </div>
 
-                    <div className="border border-border bg-card p-5 md:p-6 shadow-[4px_4px_0px_0px_hsl(var(--border))] mr-1 mb-1">
+                    <div className="border border-border bg-card p-5 md:p-6 shadow-[4px_4px_0px_0px_hsl(var(--border))] flex-1 mr-1 mb-1">
                         <h3 className="font-mono text-xs text-primary mb-4 uppercase tracking-widest border-b border-border pb-2">Status</h3>
                         <ul className="space-y-4 font-mono text-sm text-muted-foreground">
                             <li className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4">
@@ -49,7 +48,7 @@ function About() {
                     </div>
                 </div>
 
-                <div className="col-span-12 md:col-span-7 flex flex-col gap-6">
+                <div className="col-span-12 md:col-span-7 flex flex-col gap-6 h-full">
                     <div className="border border-border bg-card p-6 md:p-8 shadow-[4px_4px_0px_0px_hsl(var(--border))] h-full mr-1 mb-1">
                         <div className="space-y-10">
                             {/* Education */}

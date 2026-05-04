@@ -8,22 +8,22 @@ function Hero() {
         <motion.section
             id="hero"
             {...fadeUp}
-            className="grid grid-cols-1 md:grid-cols-12 gap-6 pt-12 md:pt-0"
+            className="grid grid-cols-1 md:grid-cols-12 gap-6"
         >
             <div className="col-span-1 md:col-start-2 md:col-span-10 border-l border-border pl-6 md:pl-8 py-4 flex flex-col items-start">
-                <span className="font-mono text-[10px] md:text-xs text-primary bg-muted border border-border px-3 py-1 uppercase tracking-[0.15em] mb-6 inline-flex items-center gap-2">
+                <span className="font-mono text-[10px] md:text-xs text-primary bg-muted border border-border px-3 py-1 uppercase tracking-[0.15em] mb-4 md:mb-6 inline-flex items-center gap-2">
                     <span>Open for opportunities</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                 </span>
                 <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-[1.1] tracking-tighter">
                     THANAT
                 </h1>
-                <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-[1.1] tracking-tighter">
+                <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-4 md:mb-6 leading-[1.1] tracking-tighter">
                     PHADINKAEW
                 </h1>
 
 
-                <span className="font-mono text-[0.6rem] md:text-[0.7rem] tracking-widest uppercase text-muted-foreground mb-6">
+                <span className="font-mono text-[0.6rem] md:text-[0.7rem] tracking-widest uppercase text-muted-foreground mb-4 md:mb-6">
 
                     CS Graduate · Full-Stack · Frontend · Backend · Data Analytics
 
@@ -31,7 +31,7 @@ function Hero() {
 
 
 
-                <p className="text-base md:text-lg text-muted-foreground max-w-2xl mb-10">
+                <p className="text-base md:text-lg text-muted-foreground max-w-2xl mb-6 md:mb-10">
                     Full-stack developer building scalable, cross-platform applications. Specialize in frontend frameworks, backend systems, and cloud-based solutions to deliver intuitive interfaces and robust backend systems.
                 </p>
 
@@ -39,18 +39,18 @@ function Hero() {
                     <a href="#projects" className="flex-1 flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 border border-primary hover:bg-primary/90 transition-colors font-mono text-xs md:text-sm tracking-widest uppercase whitespace-nowrap">
                         View My Work <ArrowRight size={18} />
                     </a>
-                    <a href="/Thanat_Resume.pdf" download="Thanat_Resume.pdf" className="flex-1 flex items-center justify-center gap-2 bg-transparent text-foreground px-6 py-3 border border-border hover:border-primary hover:text-primary transition-colors font-mono text-xs md:text-sm tracking-widest uppercase whitespace-nowrap">
+                    <a href="/Thanat_Resume.pdf" download="Thanat_Resume.pdf" className="flex-1 flex items-center justify-center gap-5 bg-transparent text-foreground px-6 py-3 border border-border hover:border-primary hover:text-primary transition-colors font-mono text-xs md:text-sm tracking-widest uppercase whitespace-nowrap">
                         <Code2 size={18} /> Resume
                     </a>
                 </div>
 
                 {/* Social Links */}
-                <div className="mt-16 flex gap-4">
-                    <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="p-3 border border-border hover:border-primary transition-all bg-card/50 backdrop-blur-sm group">
-                        <div 
+                <div className="mt-8 md:mt-16 flex gap-4">
+                    <a href="https://www.linkedin.com/in/thanatph/" target="_blank" rel="noreferrer" className="p-3 border border-border hover:border-primary transition-all bg-card/50 backdrop-blur-sm group">
+                        <div
                             className="w-5 h-5 bg-foreground group-hover:bg-primary transition-all group-hover:scale-110"
-                            style={{ 
-                                maskImage: 'url(/social-linkedin.svg)', 
+                            style={{
+                                maskImage: 'url(/social-linkedin.svg)',
                                 WebkitMaskImage: 'url(/social-linkedin.svg)',
                                 maskSize: 'contain',
                                 WebkitMaskSize: 'contain',
@@ -58,14 +58,14 @@ function Hero() {
                                 WebkitMaskRepeat: 'no-repeat',
                                 maskPosition: 'center',
                                 WebkitMaskPosition: 'center'
-                            }} 
+                            }}
                         />
                     </a>
                     <a href="https://github.com/bananasplit07" target="_blank" rel="noreferrer" className="p-3 border border-border hover:border-primary transition-all bg-card/50 backdrop-blur-sm group">
-                        <div 
+                        <div
                             className="w-5 h-5 bg-foreground group-hover:bg-primary transition-all group-hover:scale-110"
-                            style={{ 
-                                maskImage: 'url(/github.svg)', 
+                            style={{
+                                maskImage: 'url(/github.svg)',
                                 WebkitMaskImage: 'url(/github.svg)',
                                 maskSize: 'contain',
                                 WebkitMaskSize: 'contain',
@@ -73,14 +73,14 @@ function Hero() {
                                 WebkitMaskRepeat: 'no-repeat',
                                 maskPosition: 'center',
                                 WebkitMaskPosition: 'center'
-                            }} 
+                            }}
                         />
                     </a>
                     <a href="mailto:thanat.thp@gmail.com" className="p-3 border border-border hover:border-primary transition-all bg-card/50 backdrop-blur-sm group">
-                        <div 
+                        <div
                             className="w-5 h-5 bg-foreground group-hover:bg-primary transition-all group-hover:scale-110"
-                            style={{ 
-                                maskImage: 'url(/mail.svg)', 
+                            style={{
+                                maskImage: 'url(/mail.svg)',
                                 WebkitMaskImage: 'url(/mail.svg)',
                                 maskSize: 'contain',
                                 WebkitMaskSize: 'contain',
@@ -88,7 +88,7 @@ function Hero() {
                                 WebkitMaskRepeat: 'no-repeat',
                                 maskPosition: 'center',
                                 WebkitMaskPosition: 'center'
-                            }} 
+                            }}
                         />
                     </a>
                 </div>

@@ -10,7 +10,7 @@ function About() {
             id="about"
             {...fadeUp}
         >
-            <div className="mb-12">
+            <div className="mb-6 md:mb-12">
                 <h2 className="text-3xl font-semibold text-foreground tracking-tighter mb-4">About</h2>
                 <div className="w-24 h-1 bg-primary"></div>
             </div>

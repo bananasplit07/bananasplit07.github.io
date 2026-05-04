@@ -5,9 +5,9 @@ export const experienceData = [
         company: 'T.C.C. Technology Co., Ltd.',
         duration: 'April - June 2025',
         highlights: [
-            'Developing front-end contact list and messaging system using React.',
-            'Developing notification system for mobile application using Firebase Cloud Messaging.',
-            'Business analysis for customer requirements and system improvements.'
+            'Built a responsive React chat interface and contact list interface with real-time search.',
+            'Integrated Firebase Cloud Messaging for mobile app notifications.',
+            'Evaluated lead indicators , lag indicators , and outcomes to identify gaps in the business and delivering actionable recommendations.'
         ]
     }
 ];

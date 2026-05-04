@@ -14,29 +14,41 @@ function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
+    const handleNavClick = (sectionId) => {
+        const element = document.getElementById(sectionId)
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' })
+        }
+        setIsOpen(false)
+    }
+
     const navLinks = [
-        { name: 'About', href: '#about' },
-        { name: 'Projects', href: '#projects' },
+        { name: 'About', id: 'about' },
+        { name: 'Projects', id: 'projects' },
+        { name: 'Contact', id: 'contact' },
     ]
 
     return (
         <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4 ${scrolled ? 'bg-background/80 backdrop-blur-md border-b border-border shadow-sm' : 'bg-transparent border-b border-transparent'
             }`}>
             <div className="max-w-5xl mx-auto flex justify-between items-center">
-                <a href="#" className="text-xl font-bold tracking-tighter hover:opacity-70 transition-opacity">
+                <button
+                    onClick={() => handleNavClick('hero')}
+                    className="text-xl font-bold tracking-tighter hover:opacity-70 transition-opacity cursor-pointer"
+                >
                     Thanat.
-                </a>
+                </button>
 
                 {/* Desktop Links */}
                 <div className="hidden md:flex gap-8 items-center">
                     {navLinks.map((link) => (
-                        <a
+                        <button
                             key={link.name}
-                            href={link.href}
-                            className="font-mono text-sm uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
+                            onClick={() => handleNavClick(link.id)}
+                            className="font-mono text-sm uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                         >
                             {link.name}
-                        </a>
+                        </button>
                     ))}
                 </div>
 
@@ -55,14 +67,13 @@ function Navbar() {
                 }`}>
                 <div className="flex flex-col p-6 gap-4">
                     {navLinks.map((link) => (
-                        <a
+                        <button
                             key={link.name}
-                            href={link.href}
-                            onClick={() => setIsOpen(false)}
-                            className="font-mono text-sm uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
+                            onClick={() => handleNavClick(link.id)}
+                            className="font-mono text-sm uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors cursor-pointer text-left"
                         >
                             {link.name}
-                        </a>
+                        </button>
                     ))}
                 </div>
             </div>

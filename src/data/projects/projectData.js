@@ -1,3 +1,11 @@
+import botanic1 from '@/assets/botanic/botanic-img-1.png'
+import botanic2 from '@/assets/botanic/botanic-img-2.png'
+import botanic3 from '@/assets/botanic/botanic-img-3.png'
+import botanic4 from '@/assets/botanic/botanic-img-4.png'
+import botanic5 from '@/assets/botanic/botanic-img-5.png'
+import botanic6 from '@/assets/botanic/botanic-img-6.png'
+import botanic7 from '@/assets/botanic/botanic-img-7.png'
+
 export const projects = [
     {
         id: '01',
@@ -12,19 +20,7 @@ export const projects = [
         stack: ['TypeScript', 'Nuxt', 'Vue', 'Python', 'Flask', 'Gunicorn', 'Redis', 'PostgreSQL', 'Docker', 'AWS', 'Dify'],
         demo: 'https://www.rayongbotanic.app',
         repo: '',
-        images: [
-            'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=1000&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1466721591366-2d5fba72006d?q=80&w=1000&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1000&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?q=80&w=1000&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1000&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1000&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1000&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=1000&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop'
-        ]
+        images: [botanic1, botanic2, botanic3, botanic4, botanic5, botanic6, botanic7]
     },
     {
         id: '02',
@@ -39,14 +35,7 @@ export const projects = [
         stack: ['React', 'Vite', 'Golang', 'Supabase', 'Dify'],
         demo: '',
         repo: '',
-        images: [
-            'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1000&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1000&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=1000&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop'
-        ]
+        images: []
     },
     {
         id: '03',
@@ -61,13 +50,6 @@ export const projects = [
         stack: ['Flutter', 'Dart', 'Firebase', 'GraphQL'],
         demo: '',
         repo: '',
-        images: [
-            'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1000&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1000&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1565514020179-026b92b84bb6?q=80&w=1000&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=1000&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=1000&auto=format&fit=crop'
-        ]
+        images: []
     }
 ]

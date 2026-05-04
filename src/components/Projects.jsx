@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-import { ArrowUpRight, Code2, X, ChevronRight, ChevronLeft, Maximize2 } from 'lucide-react'
+import { ArrowUpRight, Code2, X, ChevronRight, ChevronLeft, Maximize2, ArrowRight } from 'lucide-react'
 import { fadeUp } from '@/lib/animations'
 import { projects } from '@/data/projects/projectData.js'
 
@@ -63,25 +63,32 @@ function ProjectCard({ project, onExpand }) {
                 {project.description}
             </motion.p>
 
-            {/* Stack */}
-            <motion.div
-                layoutId={`stack-${project.id}`}
-                className="border-t border-border pt-4 flex flex-wrap gap-2"
-            >
-                {project.stack.slice(0, 4).map((tech) => (
-                    <span
-                        key={tech}
-                        className="font-mono text-[10px] border border-border px-2 py-0.5 text-muted-foreground bg-background"
-                    >
-                        {tech}
-                    </span>
-                ))}
-                {project.stack.length > 4 && (
-                    <span className="font-mono text-[10px] text-muted-foreground pt-1">
-                        +{project.stack.length - 4} more
-                    </span>
-                )}
-            </motion.div>
+            {/* Footer Row: Stack & More Button */}
+            <div className="border-t border-border pt-4 flex items-center justify-between gap-4 mt-auto">
+                <motion.div
+                    layoutId={`stack-${project.id}`}
+                    className="flex flex-wrap gap-2"
+                >
+                    {project.stack.slice(0, 3).map((tech) => (
+                        <span
+                            key={tech}
+                            className="font-mono text-[10px] border border-border px-2 py-0.5 text-muted-foreground bg-background"
+                        >
+                            {tech}
+                        </span>
+                    ))}
+                    {project.stack.length > 3 && (
+                        <span className="font-mono text-[10px] text-muted-foreground pt-1">
+                            +{project.stack.length - 3}
+                        </span>
+                    )}
+                </motion.div>
+
+                <div className="flex items-center gap-2 text-primary font-mono text-[10px] uppercase tracking-widest transition-all duration-300 group-hover:gap-3 flex-shrink-0">
+                    <span className="hidden sm:inline">Details</span>
+                    <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+                </div>
+            </div>
 
         </motion.div>
     )

@@ -11,7 +11,7 @@ export const projects = [
         id: '01',
         title: 'Rayong Botanic Garden',
         description:
-            'Developed a web application for Rayong Botanic Garden as a real-client project, serving as an interactive learning and touring media for visitors.',
+            'An interactive web application for garden visitors, featuring a categorized map to help explore different zones and plant collections.',
         features: [
             'Developed a web application for Rayong Botanic Garden as a real-client project, serving as an interactive learning and touring media for visitors',
             'Designed application wireframes in Figma to define structure, user flow, and functionality prior to development',
@@ -26,7 +26,7 @@ export const projects = [
         id: '02',
         title: 'CS Course Registration Recommendation Chatbot',
         description:
-            'Developed an AI-powered web chatbot, designed to assist Computer Science students at Chiang Mai University with course registration.',
+            'An AI-powered chatbot designed to help students with course registration, offering personalized recommendations and enrollment checks.',
         features: [
             'Developed an AI-powered web chatbot, designed to assist Computer Science students at Chiang Mai University with course registration',
             'Engineered an LLM workflow using Dify to handle natural language queries across three core features course information lookup, enrollment eligibility checking, and personalized course recommendations based on completed courses and target career paths',
@@ -41,7 +41,7 @@ export const projects = [
         id: '03',
         title: 'S.Factory',
         description:
-            'Developed a cross-platform factory maintenance management system supporting iOS, Android, web, Windows, macOS, and Linux using Flutter and Dart.',
+            'A cross-platform management system for factory maintenance, providing role-based features and real-time data synchronization.',
         features: [
             'Developed a cross-platform factory maintenance management system supporting iOS, Android, web, Windows, macOS, and Linux using Flutter and Dart',
             'Role-based access control for three user types (Admin, Mechanic, Staff) with dynamic navigation and feature visibility using secure local storage and Firebase Auth',

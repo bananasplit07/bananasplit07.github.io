@@ -4,6 +4,13 @@ import { fadeUp } from '@/lib/animations'
 
 
 function Hero() {
+    const handleNavClick = (sectionId) => {
+        const element = document.getElementById(sectionId)
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' })
+        }
+    }
+
     return (
         <motion.section
             id="hero"
@@ -36,9 +43,12 @@ function Hero() {
                 </p>
 
                 <div className="grid grid-cols-2 gap-4 w-fit">
-                    <a href="#projects" className="flex-1 flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 border border-primary hover:bg-primary/90 transition-colors font-mono text-xs md:text-sm tracking-widest uppercase whitespace-nowrap">
+                    <button
+                        onClick={() => handleNavClick('projects')}
+                        className="flex-1 flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 border border-primary hover:bg-primary/90 transition-colors font-mono text-xs md:text-sm tracking-widest uppercase whitespace-nowrap cursor-pointer"
+                    >
                         View My Work <ArrowRight size={18} />
-                    </a>
+                    </button>
                     <a href="/Thanat_Resume.pdf" download="Thanat_Resume.pdf" className="flex-1 flex items-center justify-center gap-5 bg-transparent text-foreground px-6 py-3 border border-border hover:border-primary hover:text-primary transition-colors font-mono text-xs md:text-sm tracking-widest uppercase whitespace-nowrap">
                         <Code2 size={18} /> Resume
                     </a>
@@ -46,7 +56,7 @@ function Hero() {
 
                 {/* Social Links */}
                 <div className="mt-8 md:mt-16 flex gap-4">
-                    <a href="https://www.linkedin.com/in/thanatph/" target="_blank" rel="noreferrer" className="p-3 border border-border hover:border-primary transition-all bg-card/50 backdrop-blur-sm group">
+                    <a href="https://linkedin.com/in/thanatph/" target="_blank" rel="noreferrer" className="p-3 border border-border hover:border-primary transition-all bg-card/50 backdrop-blur-sm group">
                         <div
                             className="w-5 h-5 bg-foreground group-hover:bg-primary transition-all group-hover:scale-110"
                             style={{
